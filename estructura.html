@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="path/to/your/logo.png" type="image/png" />
+  <title>Simetría Facial - Lookmaxxing</title>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="index.html" class="navbar__logo">Lookmaxxing Hub</a>
+        <div class="navbar__notch">
+            <p>Inicio</p>
+            <a href="inicio.html" class="navbar__menu-link">Inicio</a>
+        </div>
+        <div class="navbar__menu">
+            <a href="estructura.html" class="navbar__menu-link">Estructura Facial</a>
+            <a href="rutinas.html" class="navbar__menu-link">Rutinas</a>
+            <a href="consejos.html" class="navbar__menu-link">Consejos</a>
+            <a href="videos.html" class="navbar__menu-link">Videos</a>
+        </div>
+    </nav>
+
+
+<h2 class="separator">Análisis de Simetría Facial</h2>
+
+<div class="program">
+    <div class="program__info">
+        <h2 class="program__title">¿Qué tan simétrica es tu cara?</h2>
+        <p class="program__description">
+            La simetría facial es uno de los factores más influyentes en la percepción de la belleza. En el Lookmaxxing, se considera un indicador clave del atractivo visual.
+        </p>
+        <p class="program__description">
+            Diversos estudios han demostrado que una mayor simetría en el rostro está relacionada con una percepción más favorable por parte de otras personas. Aunque nadie es perfectamente simétrico, pequeños ajustes o mejoras en el ángulo de la mandíbula, posición de los ojos o proporciones pueden hacer una gran diferencia visual.
+        </p>
+        <p class="program__description">
+            En esta herramienta puedes subir una imagen frontal de tu rostro y recibir una estimación de tu simetría facial. ¡Empieza a pulir tu mejor versión!
+        </p>
+        
+        <input type="file" accept="image/*" id="faceImage" class="trig-form__input" />
+        <button onclick="analyzeSymmetry()" class="btn">Analizar Simetría</button>
+        <div id="symmetryResults"></div>
+    </div>
+
+    
+</div>
+
+<div class="about">
+    <img src="img/PSLG1.jpg" alt="About Image" class="about__image">
+    <div class="about__details">
+        <div class="about__details-title">Sobre Lookmaxxing Hub</div>
+        <div class="about__details-description">
+            Somos una comunidad dedicada a ayudarte a mejorar tu apariencia de manera natural, realista y efectiva. Desde hábitos diarios hasta estrategias avanzadas de mejora estética.
+        </div>
+        <button class="about__details-button">Conócenos</button>
+    </div>
+</div>
+
+<div class="gradient">
+    <div class="subscription">
+        <h2 class="subscription__title">Suscríbete para más contenido</h2>
+        <p class="subscription__description">
+            Recibe tips exclusivos, guías y recursos semanales para potenciar tu Lookmaxxing.
+        </p>
+        <form class="subscription__form">
+            <input type="email" class="subscription__input" placeholder="Ingresa tu email" required>
+            <button type="submit" class="subscription__button">Suscribirse</button>
+        </form>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-links">
+            <div class="footer__branding">
+                <p class="footer__brand-name">Lookmaxxing Hub</p>
+            </div>
+            <div class="footer__column">
+                <a href="estructura.html" class="footer__link">Estructura Facial</a>
+                <a href="rutinas.html" class="footer__link">Rutinas Estéticas</a>
+                <a href="consejos.html" class="footer__link">Consejos y Hábitos</a>
+                <a href="contacto.html" class="footer__link">Contacto</a>
+            </div>
+        </div>
+        <p class="footer__copyright">2025 © Lookmaxxing Hub</p>
+    </footer>
+</div>
+
+<audio id="audio" src="SpotifyMate.com - EEYUH_ x Fluxxwave _Slowed _ Reverb_ - Clovis Reyes.mp3" preload="auto" loop></audio>
+
+<script>
+function analyzeSymmetry() {
+    const fileInput = document.getElementById('faceImage');
+    const image = document.getElementById('previewImage');
+    const resultDiv = document.getElementById('symmetryResults');
+
+    if (fileInput.files.length === 0) {
+        alert("Por favor selecciona una imagen");
+        return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        image.src = e.target.result;
+
+        // Simulación del análisis con IA
+        const simetria = (80 + Math.random() * 15).toFixed(1); // entre 80% y 95%
+        let mensaje = `<p>Tu simetría es del <strong>${simetria}%</strong>.`;
+
+        if (simetria > 90) {
+            mensaje += " ¡Nivel de élite! Estás en la cima del Lookmaxxing 🔥💯</p>";
+        } else if (simetria > 85) {
+            mensaje += " Muy buena simetría, sigue optimizando y verás resultados estéticos notables 😎📐</p>";
+        } else {
+            mensaje += " Aún puedes mejorar, enfócate en ejercicios de mewing, cuidado de la piel y ángulos fotográficos 🧼👃</p>";
+        }
+
+        resultDiv.innerHTML = mensaje;
+    };
+    reader.readAsDataURL(fileInput.files[0]);
+}
+document.addEventListener("DOMContentLoaded", function () {
+            const audio = document.getElementById('audio');
+            const savedTime = localStorage.getItem('audioTime');
+            if (savedTime) {
+                audio.currentTime = parseFloat(savedTime);
+            }
+
+            function playAudio() {
+                audio.volume = 0.4;
+                audio.muted = false;
+                audio.play().catch(error => {
+                    console.warn("⚠️ Error al reproducir el audio:", error);
+                });
+            }
+
+            playAudio();
+
+            audio.addEventListener('timeupdate', () => {
+                localStorage.setItem('audioTime', audio.currentTime);
+            });
+
+            audio.addEventListener('ended', () => {
+                localStorage.removeItem('audioTime');
+            });
+
+            document.addEventListener("visibilitychange", () => {
+                if (document.hidden) {
+                    audio.pause();
+                } else if (!audio.muted) {
+                    audio.play();
+                }
+            });
+        });
+</script>
+<script src="script.js"></script>
+</body>
+</html>

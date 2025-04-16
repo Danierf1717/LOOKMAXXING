@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="path/to/your/logo.png" type="image/png">
+<title>Lookmaxxing- Videos</title>
+    <style>
+        .video-feed {
+    width: 100%;
+    max-width: 800px; /* Ajusta el ancho máximo según sea necesario */
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.video-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow-y: auto;
+    max-height: 1500vh; /* Ajusta la altura máxima según sea necesario */
+}
+
+.video-item {
+    width: 100%;
+    margin: 10px 0;
+    position: relative; /* Para el posicionamiento del iframe */
+    padding-top: 56.25%; /* Mantiene la relación de aspecto 16:9 */
+}
+
+iframe {
+    position: absolute; /* Posiciona el iframe dentro del contenedor */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* Asegura que el iframe ocupe todo el contenedor */
+    border: none;
+    display: block; /* Asegura que el iframe se muestre como un bloque */
+}
+
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <a href="index.html" class="navbar__logo">Lookmaxxing Hub</a>
+        <div class="navbar__notch">
+            <p>Inicio</p>
+            <a href="inicio.html" class="navbar__menu-link">Inicio</a>
+        </div>
+        <div class="navbar__menu">
+            <a href="estructura.html" class="navbar__menu-link">Estructura Facial</a>
+            <a href="rutinas.html" class="navbar__menu-link">Rutinas</a>
+            <a href="consejos.html" class="navbar__menu-link">Consejos</a>
+            <a href="videos.html" class="navbar__menu-link">Videos</a>
+        </div>
+    </nav>
+
+
+    <h2 class="separator">Feed de Videos</h2>
+    <div class="video-feed">
+        <div class="video-container" id="videoContainer">
+            <!-- Aquí se cargarán los videos -->
+        </div>
+    </div>
+
+    <script>
+        const videoLinks = [
+            "https://www.tiktok.com/embed/7468619005314649349",
+            "https://www.tiktok.com/embed/7436521599802658070",
+            "https://www.tiktok.com/embed/7446808937950661893",
+            "https://www.tiktok.com/embed/7455332458066693382",
+            "https://www.tiktok.com/embed/7435017765112515862",
+            "https://www.tiktok.com/embed/7477638244067282182",
+            "https://www.tiktok.com/embed/7439341624502521144",
+            "https://www.tiktok.com/embed/7449098813744123141",
+            "https://www.tiktok.com/embed/7486105612540022021",
+            "https://www.tiktok.com/embed/7487395311468547383",
+            "https://www.tiktok.com/embed/7416073272644668705",
+            "https://www.tiktok.com/embed/7418516007859359019",
+            "https://www.tiktok.com/embed/7454804216960322849",
+            "https://www.tiktok.com/embed/7440799689110244630",
+            "https://www.tiktok.com/embed/7431899860481084703",
+            "https://www.tiktok.com/embed/7473566256654830870",
+            "https://www.tiktok.com/embed/7470153147806207254",
+            "https://www.tiktok.com/embed/7454286925743213830",
+
+            
+           
+        ];
+
+        const container = document.getElementById("videoContainer");
+
+         videoLinks.forEach(link => {
+         const videoItem = document.createElement("div");
+         videoItem.classList.add("video-item");
+         videoItem.innerHTML = `<iframe src="${link}" allowfullscreen></iframe>`;
+         container.appendChild(videoItem);
+    });
+    
+        const audio = document.getElementById('audio');
+
+        // Función para pausar el audio
+        function pauseAudio() {
+            audio.pause();
+        }
+
+        // Función para reproducir el audio
+        function playAudio() {
+            audio.play();
+        }
+
+        // Pausar el audio cuando se reproduce un video
+        const iframes = document.querySelectorAll('iframe');
+        iframes.forEach(iframe => {
+            iframe.addEventListener('load', () => {
+                const iframeWindow = iframe.contentWindow;
+                iframeWindow.addEventListener('focus', pauseAudio);
+                iframeWindow.addEventListener('blur', playAudio);
+            });
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+            // Cargar la posición guardada
+            const savedTime = localStorage.getItem('audioTime');
+            if (savedTime) {
+                audio.currentTime = parseFloat(savedTime); // Reproducir desde la última posición guardada
+            }
+
+            // Reproducir el audio cuando se carga la página
+            audio.play().then(() => {
+                document.title = "🔊 Reproduciendo Audio"; // Cambiar título al inicio del audio
+            });
+
+            // Guardar la posición actual al pausar o cerrar la pestaña
+            audio.addEventListener('timeupdate', () => {
+                localStorage.setItem('audioTime', audio.currentTime);
+            });
+
+            // Limpiar la posición guardada si el audio termina
+            audio.addEventListener('ended', () => {
+                localStorage.removeItem('audioTime');
+            });
+
+            // Función para alternar entre silenciar y no silenciar cuando la pestaña cambia de visibilidad
+            function handleVisibilityChange() {
+                if (document.hidden) {
+                    // Cuando la pestaña está oculta, pausamos el audio
+                    audio.pause();
+                } else {
+                    // Cuando la pestaña vuelve a estar visible, reproducir el audio si no está en mute
+                    if (!audio.muted) {
+                        audio.play();
+                    }
+                }
+            }
+
+            // Detectar cuando la pestaña pierde o gana visibilidad
+            document.addEventListener("visibilitychange", handleVisibilityChange);
+        });
+    </script>
+
+<div class="about">
+    <img src="img/PSLG1.jpg" alt="About Image" class="about__image">
+    <div class="about__details">
+        <div class="about__details-title">Sobre Lookmaxxing Hub</div>
+        <div class="about__details-description">
+            Somos una comunidad dedicada a ayudarte a mejorar tu apariencia de manera natural, realista y efectiva. Desde hábitos diarios hasta estrategias avanzadas de mejora estética.
+        </div>
+        <button class="about__details-button">Conócenos</button>
+    </div>
+</div>
+
+<div class="gradient">
+    <div class="subscription">
+        <h2 class="subscription__title">Suscríbete para más contenido</h2>
+        <p class="subscription__description">
+            Recibe tips exclusivos, guías y recursos semanales para potenciar tu Lookmaxxing.
+        </p>
+        <form class="subscription__form">
+            <input type="email" class="subscription__input" placeholder="Ingresa tu email" required>
+            <button type="submit" class="subscription__button">Suscribirse</button>
+        </form>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-links">
+            <div class="footer__branding">
+                <p class="footer__brand-name">Lookmaxxing Hub</p>
+            </div>
+            <div class="footer__column">
+                <a href="estructura.html" class="footer__link">Estructura Facial</a>
+                <a href="rutinas.html" class="footer__link">Rutinas Estéticas</a>
+                <a href="consejos.html" class="footer__link">Consejos y Hábitos</a>
+                <a href="contacto.html" class="footer__link">Contacto</a>
+            </div>
+        </div>
+        <p class="footer__copyright">2025 © Lookmaxxing Hub</p>
+    </footer>
+</div>
+
+
+            <p class="footer__copyright">2025 © Lookmaxxing Hub</p>
+        </footer>
+    </div>
+
+    <audio id="audio" src="" preload="auto" loop></audio>
+
+    <button id="startButton" style="visibility: hidden;">Ir a Plano Cartesiano</button>
+    <button id="infoButton" style="visibility: hidden;">Ir a Funciones</button>
+
+    <script src="script.js"></script>
+</body>
+</html>

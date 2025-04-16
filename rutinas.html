@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="path/to/your/logo.png" type="image/png" />
+  <title>Rutinas de Lookmaxxing</title>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="index.html" class="navbar__logo">Lookmaxxing Hub</a>
+        <div class="navbar__notch">
+            <p>Inicio</p>
+            <a href="inicio.html" class="navbar__menu-link">Inicio</a>
+        </div>
+        <div class="navbar__menu">
+            <a href="estructura.html" class="navbar__menu-link">Estructura Facial</a>
+            <a href="rutinas.html" class="navbar__menu-link">Rutinas</a>
+            <a href="consejos.html" class="navbar__menu-link">Consejos</a>
+            <a href="videos.html" class="navbar__menu-link">Videos</a>
+        </div>
+    </nav>
+
+<h2 class="separator">Rutinas de Lookmaxxing</h2>
+
+<div class="program">
+    <div class="program__info">
+        <h2 class="program__title">¿Cómo mejorar tu apariencia?</h2>
+        <p class="program__description">
+            El lookmaxxing se basa en optimizar tu apariencia a través de rutinas efectivas y hábitos saludables. Aquí te presentamos algunas rutinas que puedes seguir para maximizar tu atractivo.
+        </p>
+        <p class="program__description">
+            Desde ejercicios faciales hasta cuidados de la piel, cada pequeño cambio puede contribuir a una mejora significativa en tu apariencia general.
+        </p>
+        <p class="program__description">
+            A continuación, encontrarás una serie de rutinas que puedes implementar en tu día a día. ¡Comienza tu viaje hacia la mejor versión de ti mismo!
+        </p>
+        
+        <h3 class="program__title">Rutina Diaria de Cuidado Facial</h3>
+        <ul class="program__description">
+            <li>Limpiar el rostro cada mañana y noche.</li>
+            <li>Aplicar un tónico para equilibrar la piel.</li>
+            <li>Usar un sérum hidratante y protector solar durante el día.</li>
+            <li>Exfoliar la piel 2-3 veces por semana.</li>
+        </ul>
+
+        <h3 class="program__title">Ejercicios Faciales</h3>
+        <ul class="program__description">
+            <li>Realizar ejercicios de mewing para mejorar la estructura de la mandíbula.</li>
+            <li>Practicar sonrisas y gestos para tonificar los músculos faciales.</li>
+            <li>Masajes faciales para mejorar la circulación y reducir la hinchazón.</li>
+        </ul>
+         
+        <h3 class="program__title">Hábitos de Estilo de Vida</h3>
+        <ul class="program__description">
+            <li>Beber suficiente agua a lo largo del día.</li>
+            <li>Seguir una dieta equilibrada rica en frutas y verduras.</li>
+            <li>Dormir al menos 7-8 horas cada noche.</li>
+            <li>Realizar ejercicio físico regularmente.</li>
+        </ul>
+    </div>
+
+    
+</div>
+
+<div class="about">
+    <img src="img/PSLG1.jpg" alt="About Image" class="about__image">
+    <div class="about__details">
+        <div class="about__details-title">Sobre Lookmaxxing Hub</div>
+        <div class="about__details-description">
+            Somos una comunidad dedicada a ayudarte a mejorar tu apariencia de manera natural, realista y efectiva. Desde hábitos diarios hasta estrategias avanzadas de mejora estética.
+        </div>
+        <button class="about__details-button">Conócenos</button>
+    </div>
+</div>
+
+<div class="gradient">
+    <div class="subscription">
+        <h2 class="subscription__title">Suscríbete para más contenido</h2>
+        <p class="subscription__description">
+            Recibe tips exclusivos, guías y recursos semanales para potenciar tu Lookmaxxing.
+        </p>
+        <form class="subscription__form">
+            <input type="email" class="subscription__input" placeholder="Ingresa tu email" required>
+            <button type="submit" class="subscription__button">Suscribirse</button>
+        </form>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-links">
+            <div class="footer__branding">
+                <p class="footer__brand-name">Lookmaxxing Hub</p>
+            </div>
+            <div class="footer__column">
+                <a href="estructura.html" class="footer__link">Estructura Facial</a>
+                <a href="rutinas.html" class="footer__link">Rutinas Estéticas</a>
+                <a href="consejos.html" class="footer__link">Consejos y Hábitos</a>
+                <a href="contacto.html" class="footer__link">Contacto</a>
+            </div>
+        </div>
+        <p class="footer__copyright">2025 © Lookmaxxing Hub</p>
+    </footer>
+</div>
+
+<audio id="audio" src="audio/SUICIDAL-IDOL - ecstacy (slowed).mp3" preload="auto" loop></audio>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const audio = document.getElementById('audio');
+    const savedTime = localStorage.getItem('audioTime');
+    if (savedTime) {
+        audio.currentTime = parseFloat(savedTime);
+    }
+
+    function playAudio() {
+        audio.volume = 0.4;
+        audio.muted = false;
+        audio.play().catch(error => {
+            console.warn("⚠️ Error al reproducir el audio:", error);
+        });
+    }
+
+    playAudio();
+
+    audio.addEventListener('timeupdate', () => {
+        localStorage.setItem('audioTime', audio.currentTime);
+    });
+
+    audio.addEventListener('ended', () => {
+        localStorage.removeItem('audioTime');
+    });
+
+    document.addEventListener("visibilitychange", () => {
+        if (document.hidden) {
+            audio.pause();
+        } else if (!audio.muted) {
+            audio.play();
+        }
+    });
+});
+</script>
+<script src="script.js"></script>
+</body>
+</html>
+
+
