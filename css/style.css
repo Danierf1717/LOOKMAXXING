@@ -37,6 +37,126 @@ img:hover {
   padding: 1.5rem 2rem;
   background: #000;
 }
+@media screen and (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem 2rem;
+  }
+
+  .navbar__menu {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    gap: 0.5rem;
+  }
+
+  .navbar__menu-link {
+    width: 100%;
+    text-align: left;
+  }
+
+  .hero {
+    padding: 1rem;
+  }
+
+  .hero-course__title {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+
+  .hero-course__button {
+    width: 100%;
+    padding: 0.6rem;
+    margin-top: 1rem;
+  }
+
+  .program__image,
+  .career__image,
+  .about__image {
+    width: 100%;
+  }
+
+  .program__image-photo,
+  .career__image-photo,
+  .about__image {
+    height: auto;
+    border-radius: 1rem;
+  }
+
+  .about {
+    flex-direction: column;
+    padding: 1.5rem;
+    gap: 2rem;
+  }
+
+  .about__details-title {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .about__details-description {
+    font-size: 0.9rem;
+    text-align: justify;
+  }
+
+  .about__details-button {
+    width: 100%;
+    padding: 0.6rem;
+  }
+
+  .course-list__item {
+    max-width: 100%;
+    margin: 0.5rem 0;
+  }
+
+  .separator {
+    font-size: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .career__benefit-title {
+    font-size: 1rem;
+  }
+
+  .career__benefit-description {
+    font-size: 0.85rem;
+  }
+
+  .program__details {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .hero-course__mode-option,
+  .hero-course__duration-option {
+    margin-left: 0;
+    margin-top: 0.4rem;
+    width: 100%;
+    text-align: center;
+  }
+
+  .hero-course__actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .hero-course__price {
+    font-size: 1rem;
+    margin-left: 0;
+  }
+
+  .hero-course__price-original {
+    font-size: 0.9rem;
+  }
+
+  .course-list {
+    padding: 1rem;
+  }
+}
 
 .navbar__logo {
   flex: 1 1 100%;
