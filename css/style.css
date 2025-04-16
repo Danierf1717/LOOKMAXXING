@@ -30,71 +30,94 @@ img:hover {
 }
 
 .navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 2rem 4rem; /* Cambiado a rem para mejor responsividad */
-    background: #000;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 2rem;
+  background: #000;
 }
 
 .navbar__logo {
-    flex: 1;
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: #ffffff;
+  flex: 1 1 100%;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 1rem;
+  text-align: center;
 }
 
 .navbar__notch {
-    background: #333;
-    padding: 0.5rem 1rem; /* Cambiado a rem */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    border-radius: 2rem;
-    border: 1px solid #666;
+  background: #333;
+  padding: 0.4rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 2rem;
+  border: 1px solid #666;
+  margin: 0 auto;
 }
 
 .navbar__notch p {
-    font-size: 0.8rem;
-    font-weight: 500;
-    position: relative;
-    color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 500;
+  position: relative;
+  color: #ffffff;
 }
 
 .navbar__notch p::before {
-    position: absolute;
-    content: "";
-    background: #FF6F61;
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    top: 50%;
-    transform: translateY(-50%);
-    left: -10px;
+  position: absolute;
+  content: "";
+  background: #FF6F61;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+  left: -10px;
 }
 
 .navbar__menu {
-    display: flex;
-    flex: 1;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 1rem;
+  flex: 1 1 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
 }
 
 .navbar__menu-link {
-    font-size: 0.8rem;
-    font-weight: 600;
-    background: #444;
-    padding: 0.6rem 1rem; /* Cambiado a rem */
-    border-radius: 20px;
-    border: 1px solid #666;
-    transition: all 0.3s ease;
-    color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  background: #444;
+  padding: 0.6rem 1rem;
+  border-radius: 20px;
+  border: 1px solid #666;
+  transition: all 0.3s ease;
+  color: #ffffff;
+  white-space: nowrap;
 }
 
 .navbar__menu-link:hover {
-    background: #FF6F61;
+  background: #FF6F61;
+}
+
+/* 📱 Responsive fix */
+@media screen and (max-width: 480px) {
+  .navbar {
+    padding: 1rem;
+  }
+
+  .navbar__menu {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .navbar__menu-link {
+    text-align: center;
+    width: 100%;
+  }
 }
 
 .hero {
